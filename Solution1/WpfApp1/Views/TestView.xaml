@@ -1,0 +1,20 @@
+﻿<Window x:Class="WpfApp1.Views.TestView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:prism="http://prismlibrary.com/"
+        xmlns:conv="clr-namespace:WpfApp1.Converters"
+        xmlns:behavior="clr-namespace:WpfApp1.Behavior"
+        prism:ViewModelLocator.AutoWireViewModel="True">
+    <Window.Resources>
+        <conv:DecimalConverter x:Key="DecimalConverter"/>
+    </Window.Resources>
+    <StackPanel Margin="10">
+        <TextBox Text="{Binding Text.Value, UpdateSourceTrigger=PropertyChanged}">
+            <i:Interaction.Behaviors>
+                <behavior:TestBehavior/>
+            </i:Interaction.Behaviors>
+        </TextBox>
+        <Button Content="Test" Command="{Binding TestCommand}"/>
+    </StackPanel>
+</Window>
